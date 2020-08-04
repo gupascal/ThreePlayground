@@ -1,5 +1,17 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, Suspense } from 'react';
 import { Canvas, useFrame } from 'react-three-fiber'
+import { Html, MapControls, Stats } from 'drei'
+import { EffectComposer, DepthOfField, SMAA, Pixelation } from 'react-postprocessing'
+import { Fog } from 'three';
+
+// function Keen() {
+//   const { nodes, materials } = useLoader(GLTFLoader, "/scene.gltf")
+//   return (
+//     <group position={[0, -7, 0]} rotation={[-Math.PI / 2, 0, 0]} dispose={null}>
+//       <mesh material={materials["Scene_-_Root"]} geometry={nodes.mesh_0.geometry} castShadow receiveShadow />
+//     </group>
+//   )
+// }
 
 
 function Box(props) {
@@ -30,10 +42,22 @@ function Box(props) {
 function Scene() {
     return (
         <Canvas className="MainScene">
+            <Stats/>
             
+            <ambientLight />
             <directionalLight position={[10, 10, 10]}/>
+            <MapControls/>
             <Box position={[-1.2, 0, 0]} />
             <Box position={[1.2, 0, 0]} />
+
+            <Suspense fallback={<Html>loading..</Html>}>
+              {/* <Keen /> */}
+              <EffectComposer>
+                {/* <SMAA edgeDetection={0.1} /> */}
+                <DepthOfField focusDistance={0} focalLength={0.02} bokehScale={2} height={480} />
+                {/* <Pixelation granularity="3" /> */}
+              </EffectComposer>
+            </Suspense>
         </Canvas>
     );
 }
