@@ -17,6 +17,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@3.5.9
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ACCESS_TOKEN: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
           BRANCH: gh-pages # The branch the action should deploy to.
           REPOSITORY_NAME: gupascal/ThreePlayground-gh-io
           FOLDER: build # The folder the action should deploy.
