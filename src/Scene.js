@@ -1,17 +1,25 @@
 import React, { useRef, useState, Suspense } from 'react';
-import { Canvas, useFrame } from 'react-three-fiber'
-import { Html, MapControls, Stats } from 'drei'
-import { EffectComposer, DepthOfField, SMAA, Pixelation } from 'react-postprocessing'
-import { Fog } from 'three';
+import { Canvas, useFrame, useLoader, useThree } from 'react-three-fiber'
+import { Html, MapControls, Stats, Sky, PerspectiveCamera } from 'drei'
+import { EffectComposer, DepthOfField, SMAA, Pixelation, Depth, SSAO } from 'react-postprocessing'
+import { BlendFunction } from 'postprocessing'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
-// function Keen() {
-//   const { nodes, materials } = useLoader(GLTFLoader, "/scene.gltf")
-//   return (
-//     <group position={[0, -7, 0]} rotation={[-Math.PI / 2, 0, 0]} dispose={null}>
-//       <mesh material={materials["Scene_-_Root"]} geometry={nodes.mesh_0.geometry} castShadow receiveShadow />
-//     </group>
-//   )
-// }
+
+function Environment() {
+  const gltf = useLoader(GLTFLoader, "/sample/low_poly_winter_scene/scene.gltf")
+
+  gltf.scene.traverse( function( node ) {
+    if ( node.isMesh ) {
+      node.castShadow = true;
+      node.receiveShadow = true;
+    }
+  });
+
+  return (
+    <primitive object={gltf.scene} dispose={null} />
+  )
+}
 
 
 function Box(props) {
@@ -41,21 +49,27 @@ function Box(props) {
   
 function Scene() {
     return (
-        <Canvas className="MainScene">
+        <Canvas className="MainScene" shadowMap>
             <Stats/>
-            
+            <Sky/>
             <ambientLight />
-            <directionalLight position={[10, 10, 10]}/>
+            <directionalLight position={[10, 10, 10]} castShadow/>
             <MapControls/>
+            <PerspectiveCamera makeDefault position={[4, 4, 8]} />
+
             <Box position={[-1.2, 0, 0]} />
             <Box position={[1.2, 0, 0]} />
 
             <Suspense fallback={<Html>loading..</Html>}>
-              {/* <Keen /> */}
+              <Environment />
               <EffectComposer>
-                {/* <SMAA edgeDetection={0.1} /> */}
-                <DepthOfField focusDistance={0} focalLength={0.02} bokehScale={2} height={480} />
-                {/* <Pixelation granularity="3" /> */}
+                {/* <Depth/> */}
+                {/* <SSAO samples={30} rings={4} scale={4.5} bias={2.5}/> */}
+                <DepthOfField
+                  focusDistance={0.007}
+                  focalLength={0.02}
+                  bokehScale={8.0}
+                  blendFunction={BlendFunction.NORMAL} />
               </EffectComposer>
             </Suspense>
         </Canvas>
