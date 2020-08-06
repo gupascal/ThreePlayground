@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/ThreePlayground/static/css/main.efa1cf1c.chunk.css",
-    "main.js": "/ThreePlayground/static/js/main.52abd2ed.chunk.js",
-    "main.js.map": "/ThreePlayground/static/js/main.52abd2ed.chunk.js.map",
+    "main.js": "/ThreePlayground/static/js/main.81ffe0d2.chunk.js",
+    "main.js.map": "/ThreePlayground/static/js/main.81ffe0d2.chunk.js.map",
     "runtime-main.js": "/ThreePlayground/static/js/runtime-main.fae5f699.js",
     "runtime-main.js.map": "/ThreePlayground/static/js/runtime-main.fae5f699.js.map",
     "static/js/2.2ea7824b.chunk.js": "/ThreePlayground/static/js/2.2ea7824b.chunk.js",
     "static/js/2.2ea7824b.chunk.js.map": "/ThreePlayground/static/js/2.2ea7824b.chunk.js.map",
     "index.html": "/ThreePlayground/index.html",
-    "precache-manifest.22c9b1d7ae55b7bd79a98dec7cb735fc.js": "/ThreePlayground/precache-manifest.22c9b1d7ae55b7bd79a98dec7cb735fc.js",
+    "precache-manifest.5faafbe9d7324765abcb178677abd8b7.js": "/ThreePlayground/precache-manifest.5faafbe9d7324765abcb178677abd8b7.js",
     "service-worker.js": "/ThreePlayground/service-worker.js",
     "static/css/main.efa1cf1c.chunk.css.map": "/ThreePlayground/static/css/main.efa1cf1c.chunk.css.map",
     "static/js/2.2ea7824b.chunk.js.LICENSE.txt": "/ThreePlayground/static/js/2.2ea7824b.chunk.js.LICENSE.txt",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.fae5f699.js",
     "static/js/2.2ea7824b.chunk.js",
     "static/css/main.efa1cf1c.chunk.css",
-    "static/js/main.52abd2ed.chunk.js"
+    "static/js/main.81ffe0d2.chunk.js"
   ]
 }
