@@ -7,7 +7,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
 
 function Environment() {
-  const gltf = useLoader(GLTFLoader, "/sample/low_poly_winter_scene/scene.gltf")
+  const gltf = useLoader(GLTFLoader, "%PUBLIC_URL%/sample/low_poly_winter_scene/scene.gltf")
 
   gltf.scene.traverse( function( node ) {
     if ( node.isMesh ) {
